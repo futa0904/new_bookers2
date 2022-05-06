@@ -1,0 +1,19 @@
+header {
+    display: block;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+a {
+  color: white;
+}
+
+.navbaar {
+  background-color: #212529;
+}
