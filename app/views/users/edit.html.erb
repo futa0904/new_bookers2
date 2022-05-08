@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>プロフィール編集</h2>
+      <%= form_with model: @user do |f| %>
+        <div class="form-group">
+          <label for="user_name">Name</label><br>
+          <%= f.text_field :name,autofocus: true,id:"user_name", value:current_user.name %>
+        </div>
+        <div class="form-group">
+          <label for="user_image">Image</label><br>
+          <%= f.file_field :profile_image,placeholder:"Image",accept:"image/*" %>
+        </div>
+        <div class="form-group">
+          <lable for="user_introduction">Introduction</lable><br>
+          <%= f.text_area :introduction %>
+        </div>
+        <%= f.submit"Update User" %>
+      <% end %>
+    </div>
+  </div>
+</div>
