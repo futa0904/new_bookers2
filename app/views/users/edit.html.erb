@@ -1,21 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h2>プロフィール編集</h2>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+      <% if @user.errors.any? %>
+        <span class="red"><%= @user.errors.count %> error prohibited this obj from being saved:</span>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li class="red"><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      
+      
       <%= form_with model: @user do |f| %>
         <div class="form-group">
-          <label for="user_name">Name</label><br>
-          <%= f.text_field :name,autofocus: true,id:"user_name", value:current_user.name %>
+          <div class="field_with_errors">
+            <label for="user_name">Name</label><br>
+          </div>
+          <div class="field_with_errors">
+            <%= f.text_field :name,autofocus: true,id:"user_name", value:current_user.name,class:"form-control name" %>
+          </div>
         </div>
         <div class="form-group">
           <label for="user_image">Image</label><br>
-          <%= f.file_field :profile_image,placeholder:"Image",accept:"image/*" %>
+          <%= f.file_field :profile_image,placeholder:"Image",accept:"image/*",class:"form-control-file user_image" %>
         </div>
         <div class="form-group">
           <lable for="user_introduction">Introduction</lable><br>
-          <%= f.text_area :introduction %>
+          <%= f.text_area :introduction,class:"form-control introduction" %>
         </div>
-        <%= f.submit"Update User" %>
+        <div class="form-group">
+          <%= f.submit"Update User",class:"btn btn-secondary" %>
+        </div>
       <% end %>
     </div>
   </div>

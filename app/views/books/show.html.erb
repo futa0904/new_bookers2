@@ -41,7 +41,7 @@
                 </div>
              <% end %>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 offset-md-1">
             <h2>Book detail</h2>
             <table class="table">
               <tbody>
@@ -62,8 +62,10 @@
                       <% end %>
                     </td>
                     <td><%= @book.body %></td>
+                    <% if user_signed_in? && current_user.id == @book.user_id %>
                     <td><%= link_to "Edit",edit_book_path(@book)  %></td>
                     <td><%= link_to "Destroy",book_path(@book),method: :delete,"data-confirm" => "Are you sure?" %></td>
+                    <% end %>
                   </tr>
               </tbody>
             </table>
