@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   before_action :correct_user, only: [:edit, :update]
-  
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
@@ -50,13 +50,13 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title,:body)
   end
-  
+
   def baria_user
     unless Post.find_by(public_uid: params[:id]).user_id == current_user.id
       redirect_to posts_path
     end
   end
-  
+
   def correct_user
     @book = Book.find(params[:id])
     @user = @book.user
