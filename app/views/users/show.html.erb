@@ -60,7 +60,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <%= link_to user_path(book.user) do %>
+                            <%= link_to user_path(book.user_id) do %>
                                 <% if book.user.profile_image.attached? %>
                                     <%= image_tag book.user.profile_image, size: "80x80" %>
                                 <% else %>
@@ -74,6 +74,7 @@
                             <% end %>
                         </td>
                         <td><%= book.body %></td>
+                        <td>コメント数: <%= book.post_comments.count %></td>
                     </tr>
                 </tbody>
                 <% end %>
